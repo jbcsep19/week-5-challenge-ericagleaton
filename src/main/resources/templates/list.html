@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/myStyle.css" type="text/css">
+</head>
+<body>
+<a href="/add">Add A Job</a><br/>
+<a href="/update/{id}">Update A Job</a><br/>
+<a href="/delete/{id}">Delete A Job</a><br/>
+<!--<table>
+    <tr>
+        <th>Author</th>
+        <th>Employer</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Phone</th>
+        <th>Posted Date</th>
+    </tr>
+    <tr th:each="job : ${jobs}">
+        <td th:text="${job.author}"></td>
+        <td th:text="${job.employer}"></td>
+        <td th:text="${job.title}"></td>
+        <td th:text="${job.description}"></td>
+        <td th:text="${job.phone}"></td>
+        <td th:text="${job.date}"></td>
+        <td>
+            <a th:href="@{/update/{id}(id=${job.id})}">Update</a> -
+            <a th:href="@{/detail/{id}(id=${job.id})}">Details</a> -
+            <a th:href="@{/delete/{id}(id=${job.id})}">Delete</a>
+        </td></tr>
+</table>
+-->
+
+<form th:action="@{/processsearch}" method="post">
+    <input type="text" placeholder="Search.." name="search">
+    <button type="submit">Search</button>
+</form>
+<a href="/add">add</a>
+<h2>All Jobs</h2>
+<div th:each="job : ${jobs}">
+    <p th:text="${job.author}"></p>
+    <p th:text="${job.employer}"></p>
+    <p th:text="${job.title}"></p>
+    <p th:text="${job.description}"></p>
+    <p th:text="${job.phone}"></p>
+    <p th:text="${#dates.format(job.date, 'dd-MMM-yyyy')}"></p>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
